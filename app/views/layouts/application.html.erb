@@ -27,6 +27,8 @@
 <li><a href="http://www..../faq">よ く あ る 質 問</a></li> 
 <li><a href="http://www..../news">ニ ュ ー ス</a></li> 
 <li><a href="http://www..../contact">お 問 い 合 わ せ</a></li>
+<li><%= link_to 'ユーザー', users_path %></li>
+<%= button_to 'ログアウト', logout_path, method: :delete %>
 </ul> 
 
 <% if session[:user_id] %>

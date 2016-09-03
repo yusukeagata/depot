@@ -6,17 +6,17 @@
     <%= form_tag do %>
     <fieldset>
         <legend>ログインしてください</legend>
-        <div>
+            <div>
             <%= label_tag :name, '名前:' %>
             <%= text_field_tag :name, params[:name] %>
-        </div>
-        <div>
-            <%= label_tag :password, 'パスワード:' %>
+            </div>
+            <div>
+            <%= label_tag :password, "password："%>
             <%= password_field_tag :password, params[:password] %>
-        </div>
-        <div>
+            </div>
+            <div>
             <%= submit_tag "ログイン" %>
-        </div>
+            </div>
     </fieldset>
     <% end %>
 </div>
