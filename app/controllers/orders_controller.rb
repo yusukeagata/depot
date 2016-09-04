@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: [:new, :create]
   
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [index,:show, :edit, :update, :destroy]
+  before_action :order_params, only: [:index, :show, :edit, :update, :destroy]
+
 
   # GET /orders
   # GET /orders.json
