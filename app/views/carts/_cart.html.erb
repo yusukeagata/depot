@@ -7,5 +7,5 @@
         <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
     </tr>
 </table>
-        <%= button_to "チェックアウト", new_order_path, method: :get %>
-        <%= button_to "空にする", cart, method: :delete,confirm: '本当によいですか？' %><% end %>
+        <%= button_to "レジに進む", new_order_path, method: :get, :class => 'btn btn-primary btn-xs' %>
+        <%= button_to "空にする", cart, method: :delete, :class => 'btn btn-primary btn-xs',confirm: '本当によいですか？' %><% end %>
