@@ -6,7 +6,7 @@ Depot::Application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
-  scope '(:locale)' do
+  #scope '(:locale)' do
     resources :users
     resources :orders do
       resources :line_items
@@ -17,5 +17,5 @@ Depot::Application.routes.draw do
       get :who_bought, on: :member
     end
     root to: 'store#index', as: 'store'
-  end
+  #end
 end

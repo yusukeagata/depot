@@ -18,7 +18,7 @@ gem 'execjs'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate'
 gem 'bootstrap-sass'
 #gem 'less-rails'
 #gem 'twitter-bootstrap-rails'

@@ -38,7 +38,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.new(params[:cart])
 
     respond_to do |format|
       if @cart.save
@@ -84,7 +84,7 @@ class CartsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.fetch(:cart, {})
-    end
+    #def cart_params
+      #params.fetch(:cart, {})
+    # =>end
 end

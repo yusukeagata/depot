@@ -1,22 +1,21 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: [:new, :create]
-  
-  before_action :set_order, only: [index,:show, :edit, :update, :destroy]
+  before_action :set_order, only: [ :show, :edit, :update, :destroy]
   before_action :order_params, only: [:index, :show, :edit, :update, :destroy]
+  
+  
 
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.paginate :page=>params[:page], :order=>'created_at desc',
-    :per_page => 10
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @orders }
-    end
+    @order = Order.paginate :page =>params[:page], :order=>'createted_at desc', :par_page=>10
     
+    respond_to do |format|
+      format.html
+      format.json {render json: @orders}
+    end
   end
-
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -29,12 +28,13 @@ class OrdersController < ApplicationController
       redirect_to store_url, notice: "カートは空です"
       return
     end
-    @order = Order.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @order }
-    end
     
+    @order = Order.new
+    
+    respond_to do |format|
+      format.html
+      format.json{render json: @order}
+    end
   end
 
   # GET /orders/1/edit
