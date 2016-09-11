@@ -1,10 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "BOOKSTORE", '#', id: "logo" %>
+    <%= link_to "BOOKSTORE", store_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", store_path %></li>
-        <li><%= link_to "cart", cart_path(@cart) %></li>
+        <li><%#= link_to "cart", cart_path %></li>
         <li><%= link_to "Log in", '#' %></li>
       </ul>
     </nav>
