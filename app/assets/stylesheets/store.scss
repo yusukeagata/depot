@@ -9,10 +9,13 @@
     border-bottom: 3px dotted #77d;
     }
     .entry{
-        overflow: auto;
+        //overflow: auto;
         margin-top: 1em;
         border-bottom: 1px dotted #77d;
         min-height: 100px;
+        float: left;
+        padding: 30px;
+        margin-left: 70px;
     
     img{
         width: 80px;
