@@ -1,15 +1,15 @@
 class OrdersController < ApplicationController
-  skip_before_filter :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:new, :create]
   before_action :set_order, only: [ :show, :edit, :update, :destroy]
   before_action :order_params, only: [ :show, :edit, :update, :destroy]
-  
+  before_action :set_search, only: [:index, :new, :edit, :show]
+
   
 
 
   # GET /orders
   # GET /orders.json
   def index
-    @search = Product.search(params[:q]) # この行を追加
     @orders = Order.all.paginate :page=>params[:page], per_page: 20
     respond_to do |format|
       format.html
@@ -97,5 +97,9 @@ class OrdersController < ApplicationController
     def order_params
       #params.require(:order).permit(:name, :address, :email, :pay_type)
       params.fetch(:order, {}).permit(:name, :address, :email, :pay_type)
+    end
+    
+    def set_search
+      @search = Product.search(params[:q])
     end
 end

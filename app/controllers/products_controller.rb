@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :product_params, only: [:edit, :update, :destroy]
+  before_action :set_search, only: [:index, :new, :edit, :show, :search]
+
 
 
   # GET /products
   # GET /products.json
   def index
     #@products = Product.all.order(:title).paginate :page=>params[:page], per_page: 20
-    @search = Product.search(params[:q]) # この行を追加
     @products = @search.result.paginate :page=>params[:page], per_page: 20
   end
 
@@ -71,7 +72,6 @@ class ProductsController < ApplicationController
     end
   end
   def search
-    @search = Product.search(params[:q]) # この行を追加
     @products = @search.result.paginate :page=>params[:page], per_page: 20
   end
   
@@ -85,5 +85,9 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
+    end
+    
+    def set_search
+      @search = Product.search(params[:q])
     end
 end

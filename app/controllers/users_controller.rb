@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :user_params, only: [:create, :edit, :update]
+  before_action :user_params, only: [:create, :update]
+  before_action :set_search, only: [:index, :new, :edit, :show]
+  skip_before_action :authorize, only: [:new, :create]
 
   # GET /users
   # GET /users.json
   def index
     @users = User.order(:name)
-    @search = Product.search(params[:q]) # この行を追加
   end
 
   # GET /users/1
@@ -76,6 +77,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-     params.require(:user).permit(:name, :password, :password_confirmation, :ksuid)
+     params.require(:user).permit(:name, :password, :password_confirmation)
     end
+    
+    def set_search
+      @search = Product.search(params[:q])
+    end
+    
 end

@@ -1,5 +1,5 @@
 class StoreController < ApplicationController
-  skip_before_filter :authorize
+  skip_before_action :authorize
   def index
     @search = Product.search(params[:q]) # この行を追加
     @products = @search.result.paginate :page=>params[:page], per_page: 20
