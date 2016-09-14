@@ -15,6 +15,9 @@ Depot::Application.routes.draw do
     resources :carts
     resources :products do
       get :who_bought, on: :member
+      collection do
+      get 'search'
+      end
     end
     root to: 'store#index', as: 'store'
   #end

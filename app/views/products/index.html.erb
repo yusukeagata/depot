@@ -1,7 +1,13 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-
+<%= search_form_for @search do |f| %>
+  <%= f.label :title_cont, 'タイトル' %>
+  <%= f.text_field :title_cont %>
+  <div>
+    <%= f.submit '検索する' %>
+  </div>
+<% end %>
 <h1>商品一覧</h1>
 <div  class="container">
     <table class="table">
@@ -30,5 +36,7 @@
   </div>
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to '商品追加', new_product_path %>
+
+<%= link_to '商品一覧', products_path %>
 <p><%= will_paginate @products %></p>

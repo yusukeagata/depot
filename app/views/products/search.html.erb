@@ -1,11 +1,3 @@
-
-<% if notice %>
-<p id="notice"><%= notice %></p> 
-<% end %>
-
-
-<h1>商品一覧</h1>
-
 <% @products.each do |product| %> 
  <div class="entry">
   <%= image_tag(product.image_url) %> 
@@ -20,3 +12,5 @@
  </div>
 <% end %>
 <p><%= will_paginate @products %></p>
+</br>
+<%= link_to "ホーム", store_path %>

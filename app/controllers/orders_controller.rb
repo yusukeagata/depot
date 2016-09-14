@@ -9,11 +9,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    @search = Product.search(params[:q]) # この行を追加
     @orders = Order.all.paginate :page=>params[:page], per_page: 20
     respond_to do |format|
       format.html
       format.json {render json: @orders}
     end
+    
   end
   # GET /orders/1
   # GET /orders/1.json

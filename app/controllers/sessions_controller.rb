@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_filter :authorize
   def new
+     @search = Product.search(params[:q]) # この行を追加
   end
 
   def create

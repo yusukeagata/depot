@@ -6,8 +6,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.order(:title).paginate :page=>params[:page], per_page: 20
-
+    #@products = Product.all.order(:title).paginate :page=>params[:page], per_page: 20
+    @search = Product.search(params[:q]) # この行を追加
+    @products = @search.result.paginate :page=>params[:page], per_page: 20
   end
 
   # GET /products/1
@@ -69,6 +70,11 @@ class ProductsController < ApplicationController
       format.atom
     end
   end
+  def search
+    @search = Product.search(params[:q]) # この行を追加
+    @products = @search.result.paginate :page=>params[:page], per_page: 20
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

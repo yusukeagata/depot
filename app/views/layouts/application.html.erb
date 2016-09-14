@@ -16,7 +16,13 @@
 </div>
 <div id="columns">
 <div id="side">
-  <%= link_to '検索', '#', :style=>"color:white;"%>
+  <%= search_form_for @search , url: search_products_path do |f| %>
+  <%= f.label :title_cont, 'タイトル検索', :style=>"color:white;" %>
+  <%= f.text_field :title_cont, :size=>"15" %>
+  <div>
+    <%= f.submit '検索する' %>
+  </div>
+<% end %>
     <% if @cart %>
     <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
     <%= render @cart %>
