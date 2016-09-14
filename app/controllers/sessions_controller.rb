@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to store_url, notice: "ログアウト"
+    redirect_to store_url, notice: "ログアウトしました。"
   end
 end

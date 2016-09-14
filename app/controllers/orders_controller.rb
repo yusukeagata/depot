@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: [:new, :create]
   before_action :set_order, only: [ :show, :edit, :update, :destroy]
-  before_action :order_params, only: [:index, :show, :edit, :update, :destroy]
+  before_action :order_params, only: [ :show, :edit, :update, :destroy]
   
   
 
@@ -9,8 +9,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @order = Order.paginate :page =>params[:page], :order=>'createted_at desc', :par_page=>10
-    
+    @orders = Order.all.paginate :page=>params[:page], per_page: 20
     respond_to do |format|
       format.html
       format.json {render json: @orders}
@@ -94,6 +93,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      #params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.fetch(:order, {}).permit(:name, :address, :email, :pay_type)
     end
 end

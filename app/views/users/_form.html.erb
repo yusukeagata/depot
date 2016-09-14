@@ -10,22 +10,22 @@
       </ul>
     </div>
   <% end %>
-  <fieldset>
     <legend>ユーザー情報の入力</legend>
-  <div>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, size: 40 %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+     
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div>
-    <%= f.label :password,'パスワード' %><br>
-    <%= f.text_field :password, size: 40 %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation, '確認' %>:
-    <%= f.password_field :password_confirmation, size: 40 %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-  </fieldset>
-<% end %>
+</div>
