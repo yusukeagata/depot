@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<% if notice %>
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
 <h1>Listing Carts</h1>
 
 <table>
@@ -12,9 +15,9 @@
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', cart %></td>
+        <td><%= link_to '編集', edit_cart_path(cart) %></td>
+        <td><%= link_to '削除', cart, method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>

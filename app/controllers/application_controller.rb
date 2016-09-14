@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  def redirect_to_with_moved_permanently(options = {}, response_status = {})
+    response_status.reverse_merge!(status: :moved_permanently)
+    redirect_to_without_moved_permanently(options, response_status)
+  end
+  alias_method_chain :redirect_to, :moved_permanently
+  
   private
   def current_cart
     Cart.find(session[:cart_id])
@@ -20,17 +26,5 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, notice: "ログインしてください"
     end
   end
-  #def authorize
-      #if request.format == Mime::HTML 
-        #unless User.find_by_id(session[:user_id])
-          #redirect_to login_url, notice: "ログインしてください"
-        #end
-      #else
-        #authenticate_or_request_with_http_basic do |username, password|
-          #user = User.find_by_name(username)
-          #user && user.authenticate(password)
-      #end
-      #end
-#end
 
 end

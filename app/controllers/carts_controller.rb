@@ -16,7 +16,7 @@ class CartsController < ApplicationController
      @cart = Cart.find(params[:id])
      rescue ActiveRecord::RecordNotFound
      logger.error "無効なカート#{params[:id]}にアクセスしようとしました"
-     redirect_to store_url, notice: '無 効 な カ ー トです'
+     redirect_to store_url, notice: '無効なカートです'
    else
       respond_to do |format|
        format.html # show.html.erb
