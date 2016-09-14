@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
     # validates :image_url, allow_blank: true, format: {
     # with: %r{\ .(gif|jpg|png)$}i,
     # message: 'はGIF、JPG、PNG画 像 のURLで な け れ ば な り ま せ ん'}
+
     private
     # この商品を参照している品目がないことを確認する
     def ensure_not_referenced_by_any_line_item
